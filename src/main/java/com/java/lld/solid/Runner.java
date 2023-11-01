@@ -1,22 +1,29 @@
 package com.java.lld.solid;
 
 import com.java.lld.solid.implementation.*;
-import com.java.lld.solid.interfaces.*;
+
+import java.util.*;
 
 public class Runner {
 
     public static void main(String[] args) {
-        Flyable eagle = new Eagle("brown","medium");
-        Flyable parrot = new Parrot("green", "medium");
+        Bird eagle = new Eagle("brown","medium");
+        Bird parrot = new Parrot("green", "medium");
+        Bird penguin = new Penguin("green", "medium");
         
-        eagle.fly();
-        parrot.fly();
+        List<Bird> birds = new ArrayList<>();
+        birds.add(eagle);
+        birds.add(parrot);
+        birds.add(penguin);
+        
+        birds.forEach(Bird::fly);
+
     }
 }
 
 // NOTES
-/*
-    With current implementation SRP and OCP are fixed because
-        - Bird class no more hold flying behavior of both Birds Eagle and Parrot. SRP is Fixed
-        - To modify flying behavior of Eagle/Parrot we have to open only that specific class - OCP is fixed
+/* 
+    Liscov violation: With this code we are forcing the Penguin to implement the fly method
+    which it doesn't intend to implement and it throws exception.
+
  */

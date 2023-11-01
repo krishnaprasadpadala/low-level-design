@@ -1,9 +1,8 @@
 package com.java.lld.solid.implementation;
 
 import com.java.lld.solid.*;
-import com.java.lld.solid.interfaces.*;
 
-public class Parrot extends Bird implements Flyable {
+public class Parrot extends Bird {
     public Parrot(String color, String size) {
         super(color, size);
     }

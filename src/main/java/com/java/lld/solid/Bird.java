@@ -15,5 +15,7 @@ public abstract class Bird {
     public void makeSound() {
         System.out.println("Making sound....!!!");
     }
+    
+    public abstract void fly();
 
 }
