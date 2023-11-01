@@ -1,7 +1,10 @@
 package com.java.lld.solid.implementation;
 
-public class FlappingBehavior {
+import com.java.lld.solid.interfaces.*;
+
+public class FlappingBehavior implements FlyingBehavior {
     
+    @Override
     public void makeFly(String type) {
         System.out.println("Yahhh...!!! "+type+" is Flapping...!!!");
     }

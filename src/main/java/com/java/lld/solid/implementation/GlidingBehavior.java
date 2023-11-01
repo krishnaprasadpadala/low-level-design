@@ -1,8 +1,11 @@
 package com.java.lld.solid.implementation;
 
-public class GlidingBehavior {
+import com.java.lld.solid.interfaces.*;
+
+public class GlidingBehavior implements FlyingBehavior {
     
-    public void doFly(String type) {
+    @Override
+    public void makeFly(String type) {
         System.out.println("Yahhh...!!! "+type+" is Gliding...!!!");
     }
 }

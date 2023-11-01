@@ -5,8 +5,8 @@ import com.java.lld.solid.interfaces.*;
 
 public class Parrot extends Bird implements Flyable {
 
-    private final FlappingBehavior flappingBehavior;
-    public Parrot(String color, String size, String type,  FlappingBehavior flappingBehavior) {
+    private final FlyingBehavior flappingBehavior;
+    public Parrot(String color, String size, String type,  FlyingBehavior flappingBehavior) {
         super(color, size, type);
         this.flappingBehavior = flappingBehavior;
     }

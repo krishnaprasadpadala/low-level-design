@@ -8,10 +8,10 @@ import java.util.*;
 public class Runner {
 
     public static void main(String[] args) {
-        FlappingBehavior flappingBehavior = new FlappingBehavior();
-        GlidingBehavior glidingBehavior = new GlidingBehavior();
+        FlyingBehavior flappingBehavior = new FlappingBehavior();
+        FlyingBehavior glidingBehavior = new GlidingBehavior();
         Flyable eagle = new Eagle("brown","medium", "eagle", glidingBehavior);
-        Flyable parrot = new Parrot("green", "medium", "parrot", flappingBehavior);
+        Flyable parrot = new Parrot("green", "medium", "parrot", glidingBehavior);
         Flyable sparrow = new Sparrow("wheatish", "medium", "sparrow", flappingBehavior);
         Swimmable penguin = new Penguin("green", "medium", "penguin");
         
@@ -29,9 +29,6 @@ public class Runner {
 
 // NOTES
 /* 
-   With this implementation we have fixed the code duplication issue, but we have
-   a new problem with this code that for example if we have to change the behavior 
-   of Parrot to Gliding we have to open 2 classes Bird and Parrot. It violates 
-   OCP, and it can be fixed by applying Dependency inversion principle.
+   with this code implementation we have fixed all SOLID violations.
    
  */
