@@ -8,10 +8,12 @@ import java.util.*;
 public class Runner {
 
     public static void main(String[] args) {
-        Flyable eagle = new Eagle("brown","medium");
-        Flyable parrot = new Parrot("green", "medium");
-        Flyable sparrow = new Sparrow("wheatish", "medium");
-        Swimmable penguin = new Penguin("green", "medium");
+        FlappingBehavior flappingBehavior = new FlappingBehavior();
+        GlidingBehavior glidingBehavior = new GlidingBehavior();
+        Flyable eagle = new Eagle("brown","medium", "eagle", glidingBehavior);
+        Flyable parrot = new Parrot("green", "medium", "parrot", flappingBehavior);
+        Flyable sparrow = new Sparrow("wheatish", "medium", "sparrow", flappingBehavior);
+        Swimmable penguin = new Penguin("green", "medium", "penguin");
         
         List<Flyable> birds = new ArrayList<>();
         birds.add(eagle);
@@ -27,10 +29,9 @@ public class Runner {
 
 // NOTES
 /* 
-    With this implementation we have fixed LSP by not forcing the penguin to fly
-    but allowing it to swim.
-    
-    But the problem with this code is the Flying behavior of Eagle and Sparrow is Same because they flap
-    and we are duplicating the behavior.
-
+   With this implementation we have fixed the code duplication issue, but we have
+   a new problem with this code that for example if we have to change the behavior 
+   of Parrot to Gliding we have to open 2 classes Bird and Parrot. It violates 
+   OCP, and it can be fixed by applying Dependency inversion principle.
+   
  */

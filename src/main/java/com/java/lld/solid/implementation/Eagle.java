@@ -4,13 +4,17 @@ import com.java.lld.solid.*;
 import com.java.lld.solid.interfaces.*;
 
 public class Eagle extends Bird implements Flyable {
-    public Eagle(String color, String size) {
-        super(color, size);
+    
+    private final GlidingBehavior glidingBehavior;
+    public Eagle(String color, String size, String type, GlidingBehavior glidingBehavior) {
+        super(color, size, type);
+        this.glidingBehavior = glidingBehavior;
     }
+    
 
 
     @Override
     public void fly() {
-        System.out.println("yahhh...!!!. Eagle is flying");
+        glidingBehavior.doFly(type);
     }
 }

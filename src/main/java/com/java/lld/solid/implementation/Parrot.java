@@ -4,12 +4,15 @@ import com.java.lld.solid.*;
 import com.java.lld.solid.interfaces.*;
 
 public class Parrot extends Bird implements Flyable {
-    public Parrot(String color, String size) {
-        super(color, size);
+
+    private final FlappingBehavior flappingBehavior;
+    public Parrot(String color, String size, String type,  FlappingBehavior flappingBehavior) {
+        super(color, size, type);
+        this.flappingBehavior = flappingBehavior;
     }
 
     @Override
     public void fly() {
-        System.out.println("yahhh... Parrot is flying..");
+        flappingBehavior.makeFly(type);
     }
 }
