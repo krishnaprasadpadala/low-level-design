@@ -1,23 +1,22 @@
 package com.java.lld.solid;
 
+import com.java.lld.solid.implementation.*;
+import com.java.lld.solid.interfaces.*;
+
 public class Runner {
 
     public static void main(String[] args) {
-        Bird sparrow = new Bird("brown", "sparrow", "medium");
-        Bird parrot = new Bird("green", "parrot", "medium");
+        Flyable eagle = new Eagle("brown","medium");
+        Flyable parrot = new Parrot("green", "medium");
         
-        sparrow.fly();
-        sparrow.makeSound();
-        
+        eagle.fly();
         parrot.fly();
-        parrot.makeSound();
     }
 }
 
 // NOTES
 /*
-  The violations with current code implementation are
-  SRP: The Bord class holds fly behavior of multiple Bird types
-  OCP: If sparrow flying behavior has to be changed or Parrot Flying behavior has to changed
-       same class has to be opened for modification.
+    With current implementation SRP and OCP are fixed because
+        - Bird class no more hold flying behavior of both Birds Eagle and Parrot. SRP is Fixed
+        - To modify flying behavior of Eagle/Parrot we have to open only that specific class - OCP is fixed
  */
