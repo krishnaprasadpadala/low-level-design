@@ -1,0 +1,45 @@
+name: CICD
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build_and_deploy_in_dev:
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: Build codebase
+        run: echo "Building the code...."
+      - name: Deploy artifacts....
+        run: echo "Deploying the artifacts"
+  
+  deploy_in_qa:
+    needs: [build_and_deploy_in_dev]
+    runs-on: [ ubuntu-latest ]
+    steps:
+      - name: QA Deploy
+        run: echo "Deploying in QA"
+  
+  validate_for_prod_deployment:
+    needs: [deploy_in_qa]
+    runs-on: [ ubuntu-latest ]
+    env:
+      CURRENT_DAY: "$(date +%A)"
+    steps:
+      - name: Validate for Production Deploy
+        run: |
+          if [[ $(date +%A) == "Thursday" || $(date +%A) == "Friday" || $(date +%A) == "Saturday" ]]; then
+            echo "Failing the Stage as Production deployment is not allowed"
+            exit 1
+          else
+            echo "Proceeding to Deployment"
+            exit 0
+          fi
+
+  deploy_in_prod:
+    needs: [deploy_in_qa, validate_for_prod_deployment]
+    runs-on: [ ubuntu-latest ]
+    steps:
+      - name: Prod deploy
+        run: echo "Deploying in QA"
